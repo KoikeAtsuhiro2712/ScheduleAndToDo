@@ -1,0 +1,14 @@
+﻿<Window x:Class="ScheduleAndToDo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScheduleAndToDo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Schedule And ToDoList App" FontSize="30" HorizontalAlignment="Center"/>
+        <Button Content="スケジュールはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenScheduleCommand}"/>
+        <Button Content="ToDoリストはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenToDoCommand}"/>
+    </StackPanel>
+</Window>
