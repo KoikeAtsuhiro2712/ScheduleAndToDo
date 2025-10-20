@@ -11,10 +11,19 @@ namespace ScheduleAndToDo.ViewModels;
 public partial class ScheduleAddWindowViewModel : ObservableObject
 {
     private const string RegisterFilePath="schedule.json";
+    //private DateTime date=DateTime.Now;
+    private DateOnly date=DateOnly.FromDateTime(DateTime.Now);
 
-    [ObservableProperty]
-    private DateTime date=DateTime.Now;
-
+    public DateOnly Date 
+    {
+        get => date;
+        set => SetProperty(ref date, value);
+    }
+    public DateTime DateForUI
+    {
+        get => date.ToDateTime(TimeOnly.MinValue);
+        set => date=DateOnly.FromDateTime(value);
+    }
     [ObservableProperty]
     private TimeSpan startTime;
 

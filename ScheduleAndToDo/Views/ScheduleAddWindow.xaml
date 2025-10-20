@@ -18,7 +18,7 @@
         <!--日付-->
         <StackPanel Orientation="Horizontal" Margin="0 10">
             <Label Content="日付" Width="80" VerticalAlignment="Center" />
-            <DatePicker SelectedDate="{Binding Date}" Width="200"/>
+            <DatePicker SelectedDate="{Binding DateForUI}" Width="200"/>
         </StackPanel>
         <!--開始時刻-->
         <StackPanel Orientation="Horizontal" Margin="0 10" Grid.Row="1">
