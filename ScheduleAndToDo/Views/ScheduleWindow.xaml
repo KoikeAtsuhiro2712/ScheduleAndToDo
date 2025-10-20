@@ -35,7 +35,15 @@
             </ListBox>
             <StackPanel Orientation="Horizontal" Grid.Row="2">
                 <Button Content="スケジュールを追加する" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenScheduleAddCommand}"/>
-                <Button Content="メインページはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
+            <Button Content="期間ごとに閲覧する" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenContextMenuCommand}" CommandParameter="{Binding RelativeSource={RelativeSource self}}">
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="日毎に見る" Width="200" FontSize="20" Command="{Binding OpenDayScheduleCommand}"/>
+                        <MenuItem Header="月毎に見る" Width="200" FontSize="20" Command="{Binding OpenMonthScheduleCommand}"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button Content="メインページはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
             </StackPanel>
     </Grid>
 </Window>

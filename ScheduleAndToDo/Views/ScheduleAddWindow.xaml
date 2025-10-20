@@ -35,7 +35,7 @@
         </StackPanel>
         <!--ボタン群-->
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <Button Content="登録" Width="100" Height="30" Command="{Binding RegisterCommand}"/>
+            <Button Content="登録" Width="100" Height="30" Margin="10" Command="{Binding RegisterCommand}"/>
             <Button Content="戻る" Width="100" Height="30" Command="{Binding OpenScheduleCommand}"/>
         </StackPanel>
     </Grid>

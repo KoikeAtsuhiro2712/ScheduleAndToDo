@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using ScheduleAndToDo.Models;
 using System.IO;
 using System.Text.Json;
+using System.Windows;
+using System.Windows.Controls;
 namespace ScheduleAndToDo.ViewModels;
 
 public partial class ScheduleWindowViewModel : ObservableObject
@@ -38,8 +40,29 @@ public partial class ScheduleWindowViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new NavigationMessage("ScheduleAdd"));
     }
     [RelayCommand]
+    private void OpenContextMenu(Button? button)
+    {
+        if (button?.ContextMenu!=null)
+        {
+            button.ContextMenu.PlacementTarget = button;
+            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            button.ContextMenu.IsOpen = true;
+        }
+    }
+    [RelayCommand]
     private void OpenMain()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Main"));
+    }
+    [RelayCommand]
+    private void OpenDaySchedule()
+    {
+        MessageBox.Show("DayScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
+        
+    }
+    [RelayCommand]
+    private void OpenMonthSchedule()
+    {
+        MessageBox.Show("MonthScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
     }
 }
