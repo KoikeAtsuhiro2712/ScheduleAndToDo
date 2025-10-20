@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using ScheduleAndToDo.ViewModels;
+﻿using ScheduleAndToDo.ViewModels;
 using System.Windows;
 
 namespace ScheduleAndToDo;

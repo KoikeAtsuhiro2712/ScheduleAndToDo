@@ -6,9 +6,34 @@
         xmlns:local="clr-namespace:ScheduleAndToDo.Views"
         mc:Ignorable="d"
         Title="ScheduleWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="{Binding Today}" FontSize="20" HorizontalAlignment="Center"/>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
 
-        <Button Content="メインページはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="{Binding Today}" FontSize="20"/>
+            </StackPanel>
+            <ListBox Grid.Row="1"
+                 ItemsSource="{Binding SelectedDateScheduleItem}"
+                 Margin="5"
+                 Height="200">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Date}" />
+                            <TextBlock Text="{Binding Content}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Button Content="スケジュールを追加する" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenScheduleAddCommand}"/>
+                <Button Content="メインページはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

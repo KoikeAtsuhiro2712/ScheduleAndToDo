@@ -21,10 +21,13 @@ public partial class App : Application
         services.AddSingleton<INavigationService,NavigationService>();
         services.AddSingleton<MainWindowViewModel>();
         services.AddSingleton<ScheduleWindowViewModel>();
+        services.AddSingleton<ScheduleAddWindowViewModel>();
         services.AddSingleton<ToDoWindowViewModel>();
 
 
         services.AddTransient<MainWindow>();
+        services.AddTransient<ToDoWindow>();
+        services.AddTransient<ScheduleAddWindow>();
         services.AddTransient<ScheduleWindow>();
         services.AddTransient<ToDoWindow>();
 
@@ -38,6 +41,10 @@ public partial class App : Application
             switch (msg.Target)
             {
                 //スケジュール管理ページに遷移
+                //メインページに遷移
+                case "Main":
+                    NavigateTo<MainWindow, MainWindowViewModel>();
+                    break;
                 case "Schedule":
                     NavigateTo<ScheduleWindow,ScheduleWindowViewModel>();
                     break;
@@ -45,9 +52,9 @@ public partial class App : Application
                 case "Todo":
                     NavigateTo<ToDoWindow, ToDoWindowViewModel>();
                     break;
-
-                case "Main":
-                    NavigateTo<MainWindow, MainWindowViewModel>();
+                //スケジュール追加ページに遷移
+                case "ScheduleAdd":
+                    NavigateTo<ScheduleAddWindow,ScheduleAddWindowViewModel>();
                     break;
             }
         });
