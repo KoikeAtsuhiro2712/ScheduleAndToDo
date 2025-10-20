@@ -13,13 +13,11 @@ public partial class ScheduleWindowViewModel : ObservableObject
     private const string SaveFilePath = "schedule.json";
     [ObservableProperty]
     public ObservableCollection<ScheduleItem> selectedDateScheduleItem = new();
-    [ObservableProperty]
-    private string today = $"{DateTime.Now:yyyy年MM月dd日}の予定はこちら";
     public ScheduleWindowViewModel()
     {
         LoadSchedule();
     }
-    private void LoadSchedule()
+    public void LoadSchedule()
     {
         if (File.Exists(SaveFilePath))
         {

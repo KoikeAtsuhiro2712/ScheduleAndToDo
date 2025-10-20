@@ -57,6 +57,10 @@ public partial class App : Application
                 case "ScheduleAdd":
                     NavigateTo<ScheduleAddWindow,ScheduleAddWindowViewModel>();
                     break;
+                case "ReloadSchedule":
+                    var vm = ServiceProvider.GetRequiredService<ScheduleWindowViewModel>();
+                    vm.LoadSchedule();
+                    break;
             }
         });
     }

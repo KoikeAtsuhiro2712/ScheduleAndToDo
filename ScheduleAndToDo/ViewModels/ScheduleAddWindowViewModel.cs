@@ -47,6 +47,7 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
         };
         Items.Add(newItem);
         SaveData();
+        WeakReferenceMessenger.Default.Send(new NavigationMessage("ReloadSchedule"));
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
 
     }
