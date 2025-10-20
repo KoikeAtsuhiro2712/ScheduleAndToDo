@@ -32,6 +32,7 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
     [RelayCommand]
     private void OpenSchedule()
     {
+        SaveData();
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
     }
     [RelayCommand]
@@ -46,6 +47,8 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
         };
         Items.Add(newItem);
         SaveData();
+        WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
+
     }
     private void LoadData()
     {
@@ -55,6 +58,11 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
             if (!string.IsNullOrEmpty(json))
             {
                 var items = JsonSerializer.Deserialize<ObservableCollection<ScheduleItem>>(json);
+                if (items!= null)
+                {
+                    foreach (var item in items)
+                        Items.Add(item);
+                }
             }
         }
     }

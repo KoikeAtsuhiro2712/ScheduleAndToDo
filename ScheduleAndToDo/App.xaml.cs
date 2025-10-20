@@ -47,6 +47,7 @@ public partial class App : Application
                     break;
                 case "Schedule":
                     NavigateTo<ScheduleWindow,ScheduleWindowViewModel>();
+                    
                     break;
                 //ToDoリストページに遷移
                 case "Todo":
@@ -66,6 +67,10 @@ public partial class App : Application
         var viewModel = ServiceProvider!.GetRequiredService<TViewModel>();
         var window = ServiceProvider!.GetRequiredService<TWindow>();
         window.DataContext = viewModel;
+        if (viewModel is ScheduleAddWindowViewModel svm)
+        {   
+            
+        }
         window.Show();//新しいページを開く
         _window?.Close();//前に開いていたWindowを閉じる
         _window = window;//現在開いているWindowを保存しておく
