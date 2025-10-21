@@ -57,8 +57,8 @@ public partial class ScheduleWindowViewModel : ObservableObject
     [RelayCommand]
     private void OpenDaySchedule()
     {
-        MessageBox.Show("DayScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
-        
+        //MessageBox.Show("DayScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
+        WeakReferenceMessenger.Default.Send(new NavigationMessage("DaySchedule"));
     }
     [RelayCommand]
     private void OpenMonthSchedule()

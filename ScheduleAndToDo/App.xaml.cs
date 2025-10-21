@@ -23,13 +23,14 @@ public partial class App : Application
         services.AddSingleton<ScheduleWindowViewModel>();
         services.AddSingleton<ScheduleAddWindowViewModel>();
         services.AddSingleton<ToDoWindowViewModel>();
-
+        services.AddSingleton<DayScheduleWindowViewModel>();
 
         services.AddTransient<MainWindow>();
         services.AddTransient<ToDoWindow>();
         services.AddTransient<ScheduleAddWindow>();
         services.AddTransient<ScheduleWindow>();
         services.AddTransient<ToDoWindow>();
+        services.AddTransient<DayScheduleWindow>();
 
         ServiceProvider = services.BuildServiceProvider();
 
@@ -56,6 +57,9 @@ public partial class App : Application
                 //スケジュール追加ページに遷移
                 case "ScheduleAdd":
                     NavigateTo<ScheduleAddWindow,ScheduleAddWindowViewModel>();
+                    break;
+                case "DaySchedule":
+                    NavigateTo<DayScheduleWindow,DayScheduleWindowViewModel>();
                     break;
                 case "ReloadSchedule":
                     var vm = ServiceProvider.GetRequiredService<ScheduleWindowViewModel>();
