@@ -63,6 +63,6 @@ public partial class ScheduleWindowViewModel : ObservableObject
     [RelayCommand]
     private void OpenMonthSchedule()
     {
-        MessageBox.Show("MonthScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
+        WeakReferenceMessenger.Default.Send(new NavigationMessage("MonthSchedule"));
     }
 }

@@ -24,6 +24,7 @@ public partial class App : Application
         services.AddSingleton<ScheduleAddWindowViewModel>();
         services.AddSingleton<ToDoWindowViewModel>();
         services.AddSingleton<DayScheduleWindowViewModel>();
+        services.AddSingleton<MonthScheduleWindowViewModel>();
 
         services.AddTransient<MainWindow>();
         services.AddTransient<ToDoWindow>();
@@ -31,6 +32,7 @@ public partial class App : Application
         services.AddTransient<ScheduleWindow>();
         services.AddTransient<ToDoWindow>();
         services.AddTransient<DayScheduleWindow>();
+        services.AddTransient<MonthScheduleWindow>();
 
         ServiceProvider = services.BuildServiceProvider();
 
@@ -60,6 +62,9 @@ public partial class App : Application
                     break;
                 case "DaySchedule":
                     NavigateTo<DayScheduleWindow,DayScheduleWindowViewModel>();
+                    break;
+                case "MonthSchedule":
+                    NavigateTo<MonthScheduleWindow,MonthScheduleWindowViewModel>();
                     break;
                 case "ReloadSchedule":
                     var vm = ServiceProvider.GetRequiredService<ScheduleWindowViewModel>();

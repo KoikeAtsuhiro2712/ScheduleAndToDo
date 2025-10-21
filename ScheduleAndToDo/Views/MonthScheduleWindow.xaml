@@ -1,0 +1,44 @@
+﻿<Window x:Class="ScheduleAndToDo.Views.MonthScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ScheduleAndToDo.ViewModels"
+        xmlns:local="clr-namespace:ScheduleAndToDo.Views"
+        mc:Ignorable="d"
+        Title="MonthScheduleWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Content="←" Command="{Binding PreviousMonthCommand}" Width="40" Margin="5,0"/>
+            <TextBlock Text="{Binding YearMonth}" 
+                   FontSize="24" FontWeight="Bold"
+                   Margin="10"/>
+            <Button Content="→" Command="{Binding NextMonthCommand}" Width="40" Margin="5,0"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding GroupedMonthScheduleItem}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="8" Margin="5,0">
+                            <StackPanel Margin="10" Orientation="Horizontal">
+                                <TextBlock Text="{Binding date}"
+                                       FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                                <ItemsControl ItemsSource="{Binding items}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Content}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
