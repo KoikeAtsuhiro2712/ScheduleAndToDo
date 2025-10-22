@@ -14,17 +14,39 @@
                        FontSize="16" VerticalAlignment="Center" Margin="10,0"/>
             <Button Content="→" Command="{Binding NextDayCommand}" Width="40" Margin="5,0"/>
         </StackPanel>
-        <ListBox ItemsSource="{Binding SelectedDateScheduleItem}" Height="300" Margin="0,0,0,10">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding Content}" FontSize="16"/>
-                        <TextBlock Text="{Binding StartTime}" FontSize="16" Margin="5,0"/>
-                        <TextBlock Text="{Binding EndTime}" FontSize="16" Margin="5,0"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView ItemsSource="{Binding SelectedDateScheduleItem}" Height="300" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="スケジュール" Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Content}"
+                                               FontSize="14"
+                                               Foreground="black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="開始時刻" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding StartTime}"
+                                           FontSize="14"
+                                           Foreground="black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="終了時刻" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding EndTime}"
+                                           FontSize="14"
+                                           Foreground="black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <StackPanel Orientation="Horizontal">
             <Button Content="戻る" Command="{Binding BackScheduleCommand}" Height="40" Width="80"/>
         </StackPanel>
