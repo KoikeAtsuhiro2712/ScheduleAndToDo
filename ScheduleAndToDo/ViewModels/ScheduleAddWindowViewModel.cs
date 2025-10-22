@@ -25,10 +25,10 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
         set => date=DateOnly.FromDateTime(value);
     }
     [ObservableProperty]
-    private TimeSpan startTime;
+    private DateTime startTime=DateTime.Now;
 
     [ObservableProperty]
-    private TimeSpan endTime;
+    private DateTime endTime;
 
     [ObservableProperty]
     private string content;
@@ -50,8 +50,8 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
         var newItem = new ScheduleItem
         {
             Date= date,
-            StartTime= startTime,
-            EndTime= endTime,
+            StartTime= startTime.TimeOfDay,
+            EndTime= endTime.TimeOfDay,
             Content= content
         };
         Items.Add(newItem);

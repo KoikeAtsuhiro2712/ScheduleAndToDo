@@ -23,9 +23,9 @@
         <!--開始時刻-->
         <StackPanel Orientation="Horizontal" Margin="0 10" Grid.Row="1">
             <Label Content="開始時刻" Width="80" VerticalAlignment="Center"/>
-            <xctk:TimePicker Value="{Binding StartTime}" Width="200"/>
+            <xctk:TimePicker Value="{Binding StartTime,Mode=TwoWay}" Width="200"/>
             <Label Content="終了時刻" Width="80" VerticalAlignment="Center" />
-            <xctk:TimePicker Value="{Binding EndTime}" Width="200" />
+            <xctk:TimePicker Value="{Binding EndTime, Mode=TwoWay}" Width="200" />
         </StackPanel>
         <!--内容-->
         <StackPanel Margin="0 10" Grid.Row="3">
