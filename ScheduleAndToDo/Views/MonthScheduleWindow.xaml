@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Content="←" Command="{Binding PreviousMonthCommand}" Width="40" Margin="5,0"/>
-            <TextBlock Text="{Binding YearMonth}" 
+            <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
                    FontSize="24" FontWeight="Bold"
                    Margin="10"/>
             <Button Content="→" Command="{Binding NextMonthCommand}" Width="40" Margin="5,0"/>
@@ -25,7 +25,7 @@
                     <DataTemplate>
                         <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="8" Margin="5,0">
                             <StackPanel Margin="10" Orientation="Horizontal">
-                                <TextBlock Text="{Binding date}"
+                                <TextBlock Text="{Binding date,StringFormat='{}{0:MM/dd}'}"
                                        FontWeight="Bold" FontSize="16" Margin="0,5"/>
                                 <ItemsControl ItemsSource="{Binding items}">
                                     <ItemsControl.ItemTemplate>

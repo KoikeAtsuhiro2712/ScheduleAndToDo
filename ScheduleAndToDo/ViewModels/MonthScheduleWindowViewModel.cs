@@ -12,8 +12,6 @@ public partial class MonthScheduleWindowViewModel : ObservableObject
     private const string FilePath = "schedule.json";
     private int currentMonthDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
     [ObservableProperty]
-    public string yearMonth = DateOnly.FromDateTime(DateTime.Now).ToString("yyyy年M月");
-    [ObservableProperty]
     private DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
     public ObservableCollection<ScheduleItem> selectedMonthScheduleItem;
     [ObservableProperty]
@@ -25,13 +23,13 @@ public partial class MonthScheduleWindowViewModel : ObservableObject
     [RelayCommand]
     private void PreviousMonth()
     {
-        currentDate = currentDate.AddMonths(-1);
+        CurrentDate = CurrentDate.AddMonths(-1);
         Generate();
     }
     [RelayCommand]
     private void NextMonth()
     {
-        currentDate = currentDate.AddMonths(1);
+        CurrentDate = CurrentDate.AddMonths(1);
         Generate();
     }
     private void Generate()
@@ -50,7 +48,7 @@ public partial class MonthScheduleWindowViewModel : ObservableObject
             }
         }
         groupedMonthScheduleItem.Clear();
-        currentMonthDays = DateTime.DaysInMonth(CurrentDate.Year,currentDate.Month);
+        currentMonthDays = DateTime.DaysInMonth(currentDate.Year,currentDate.Month);
         for (int day=1;day<=currentMonthDays;day++)
         {
             var date = new DateOnly(currentDate.Year,currentDate.Month,day);
