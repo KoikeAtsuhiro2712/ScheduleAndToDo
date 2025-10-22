@@ -12,13 +12,24 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Content="←" Command="{Binding PreviousMonthCommand}" Width="40" Margin="5,0"/>
-            <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
-                   FontSize="24" FontWeight="Bold"
+            <Grid Grid.Row="0" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Content="←" Command="{Binding PreviousMonthCommand}" Width="40" Margin="5,0"
+                    Grid.Column="0" />
+                <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
+                   Grid.Column="1"
+                   TextAlignment="Center"
+                   FontSize="24" 
+                   FontWeight="Bold"
                    Margin="10"/>
-            <Button Content="→" Command="{Binding NextMonthCommand}" Width="40" Margin="5,0"/>
-        </StackPanel>
+                <Button Content="→"
+                    Grid.Column="2"
+                    Command="{Binding NextMonthCommand}" Width="40" Margin="5,0"/>
+            </Grid>
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding GroupedMonthScheduleItem}">
                 <ItemsControl.ItemTemplate>
@@ -30,7 +41,14 @@
                                 <ItemsControl ItemsSource="{Binding items}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Content}" />
+                                            <!--<TextBlock Text="{Binding Content}" 
+                                                       TextAlignment="Center"/>-->
+                                            <StackPanel Orientation="Horizontal" Margin="5,0">
+                                                <TextBlock Text="{Binding StartTime}" FontSize="20"/>
+                                                <TextBlock Text="～" FontSize="20"/>
+                                                <TextBlock Text="{Binding EndTime}" FontSize="20" Margin="5,0" />
+                                                <TextBlock Text="{Binding Content}" FontSize="20"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
