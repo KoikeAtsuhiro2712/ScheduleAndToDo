@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using ScheduleAndToDo.Models;
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using CommunityToolkit.Mvvm.Messaging;
+using ScheduleAndToDo.Views.Message;
 
 namespace ScheduleAndToDo.ViewModels;
 
@@ -31,6 +33,11 @@ public partial class MonthScheduleWindowViewModel : ObservableObject
     {
         CurrentDate = CurrentDate.AddMonths(1);
         Generate();
+    }
+    [RelayCommand]
+    private void BackSchedule()
+    {
+        WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
     }
     private void Generate()
     {
