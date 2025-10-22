@@ -29,7 +29,7 @@ public partial class ScheduleWindowViewModel : ObservableObject
                 var items = JsonSerializer.Deserialize<ObservableCollection<ScheduleItem>>(json);
                 if (items != null)
                 {
-                    selectedDateScheduleItem = items;
+                    selectedDateScheduleItem = new ObservableCollection<ScheduleItem>(items.OrderBy(s => s.Date));
                 }
             }
         }
