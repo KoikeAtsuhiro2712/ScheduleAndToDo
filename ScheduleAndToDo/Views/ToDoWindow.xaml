@@ -17,9 +17,8 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <CheckBox IsChecked="{Binding IsCompleted}" Margin="0,7,0,0" Width="30" Height="30" HorizontalAlignment="Center"/>
                             <TextBlock Text="{Binding Title}" FontSize="20" HorizontalAlignment="Center" />
-                            <Button Content="完了" Height="30" Width="50" FontSize="20" Margin="5" Command="{Binding DataContext.CompleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                            <Button Content="削除" Height="30" Width="50" FontSize="20" Margin="5" Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

@@ -31,7 +31,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
         }
     }
     [RelayCommand]
-    private void CompleteToDoItem(TodoItem? item)
+    private void DeleteToDoItem(TodoItem? item)
     {
         if (item is not null && ToDoItems.Contains(item))
         {
