@@ -48,6 +48,7 @@ public partial class DayScheduleWindowViewModel : ObservableObject
                 if (items!=null)
                 {
                     var filter = items.Where(s => s.Date == currentDate);
+                    SelectedDateScheduleItem.Clear();
                     foreach (var item in filter)
                     {
                         selectedDateScheduleItem.Add(item);
