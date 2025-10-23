@@ -9,14 +9,24 @@
         mc:Ignorable="d"
         Title="ToDoWindow" Height="450" Width="800">
     <StackPanel Margin="10">
+        <TextBlock Text="ToDoリスト" TextAlignment="Center" FontSize="20"/>
         <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
             <TextBox Width="200" FontSize="20" Text="{Binding NewTitle,UpdateSourceTrigger=PropertyChanged}"/>
             <DatePicker x:Name="DatePart" SelectedDate="{Binding NewDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"/>
-            <Button Content="追加" 
-                    Height="40" Width="200"
-                    FontSize="20"
-                    Command="{Binding AddItemCommand}" 
-                    Margin="0,20,0,0" />
+            <Button Height="30" Width="90"
+                    FontSize="15"
+                    Command="{Binding AddItemCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Margin="0,20,0,0">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="追加"/>
+            </Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ListView ItemsSource="{Binding ToDoPendingScheduleItem}" Height="100" Margin="0,0,0,10">
@@ -51,7 +61,11 @@
                         <GridViewColumn  Header="削除">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="削除" Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                    <Button Content="削除"
+                                            Style="{StaticResource MaterialDesignRaisedButton}"
+                                            Background="{DynamicResource MaterialDesignError}"
+                                            Foreground="White"
+                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
                                             CommandParameter="{Binding}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -93,16 +107,17 @@
                         <GridViewColumn  Header="削除">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <!--<Button Content="削除"
-                                            Style="{StaticResource MaterialDesignOutlinedButton}"
-                                            Foreground="Red"
-                                            BorderBrush="Red"
-                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
-                                            CommandParameter="{Binding}"/>-->
                                     <Button Style="{StaticResource MaterialDesignRaisedButton}"
                                             Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
                                             CommandParameter="{Binding}">
-                                        <TextBlock Text="削除"/>
+                                        <Button.Resources>
+                                            <ResourceDictionary>
+                                                <ResourceDictionary.MergedDictionaries>
+                                                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml"/>
+                                                </ResourceDictionary.MergedDictionaries>
+                                            </ResourceDictionary>
+                                        </Button.Resources>
+                                        <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" Margin="0,0,4,0"/>
                                     </Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -111,11 +126,16 @@
                 </ListView.View>
             </ListView>
         </ScrollViewer>
-        <Button Style="{DynamicResource MaterialDesignOutlinedButton}"
-                Height="30" Width="80" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock Text="戻る" VerticalAlignment="Center"/>
-            </StackPanel>
+        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                Height="30" Width="80" Command="{Binding OpenMainCommand}">
+            <Button.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Button.Resources>
+            <TextBlock Text="戻る"/>
         </Button>
     </StackPanel>
 </Window>
