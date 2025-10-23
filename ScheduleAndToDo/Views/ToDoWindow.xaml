@@ -1,6 +1,7 @@
 ﻿<Window x:Class="ScheduleAndToDo.Views.ToDoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScheduleAndToDo.Views"
@@ -8,24 +9,113 @@
         mc:Ignorable="d"
         Title="ToDoWindow" Height="450" Width="800">
     <StackPanel Margin="10">
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
+        <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
             <TextBox Width="200" FontSize="20" Text="{Binding NewTitle,UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Add" Height="40" Width="200" FontSize="20" Command="{Binding AddItemCommand}" Margin="30,0,0,0" />
+            <DatePicker x:Name="DatePart" SelectedDate="{Binding NewDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0"/>
+            <Button Content="追加" 
+                    Height="40" Width="200"
+                    FontSize="20"
+                    Command="{Binding AddItemCommand}" 
+                    Margin="0,20,0,0" />
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListBox ItemsSource="{Binding ToDoItems}" Height="200">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox IsChecked="{Binding IsCompleted}" Margin="0,7,0,0" Width="30" Height="30" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding Title}" FontSize="20" HorizontalAlignment="Center" />
-                            <Button Content="完了" Height="30" Width="50" FontSize="20" Margin="5" Command="{Binding DataContext.CompleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <ListView ItemsSource="{Binding ToDoPendingScheduleItem}" Height="100" Margin="0,0,0,10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="完了可否">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsCompleted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="ToDo" Width="300">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Content}"
+                                               TextAlignment="Center"
+                                               FontSize="14"
+                                               Foreground="black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="期限">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Deadlinedate}"
+                                               FontSize="14"
+                                               Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn  Header="削除">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="削除" Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </ScrollViewer>
-        
-        <Button Content="戻る" Height="40" Width="100" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ListView ItemsSource="{Binding ToDoCompletingScheduleItem}" Height="100" Margin="0,0,0,10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="完了可否">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsCompleted}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="ToDo" Width="300">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Content}"
+                                               TextAlignment="Center"
+                                               FontSize="14"
+                                               Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="期限">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Deadlinedate}"
+                                               FontSize="14"
+                                               Foreground="Black"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn  Header="削除">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<Button Content="削除"
+                                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                                            Foreground="Red"
+                                            BorderBrush="Red"
+                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding}"/>-->
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding}">
+                                        <TextBlock Text="削除"/>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+        <Button Style="{DynamicResource MaterialDesignOutlinedButton}"
+                Height="30" Width="80" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="戻る" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </Window>

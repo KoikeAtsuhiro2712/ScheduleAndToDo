@@ -11,13 +11,39 @@ namespace ScheduleAndToDo.ViewModels;
 
 public　partial class ToDoWindowViewModel : ObservableObject
 {
+    [ObservableProperty]
+    private DateTime deadlineDate= DateTime.Now;
     private const string SaveFilePath = "todos.json";
     [ObservableProperty]
-    private ObservableCollection<TodoItem> toDoItems = new();
+    private ObservableCollection<TodoItem> toDoPendingScheduleItem = new();
+    [ObservableProperty]
+    private ObservableCollection<TodoItem> toDoCompletingScheduleItem=new();
+    [ObservableProperty]
+    private DateTime newDate;
     [ObservableProperty]
     private string newTitle;
     public ToDoWindowViewModel()
     {
+        WeakReferenceMessenger.Default.Register<TodoCompletedMessage>(this, (r, m) =>
+        {
+            var item = m.Value;
+            if (item.IsCompleted)
+            {
+                ToDoPendingScheduleItem.Remove(item);
+                if (!ToDoCompletingScheduleItem.Contains(item))
+                {
+                    ToDoCompletingScheduleItem.Add(item);
+                }
+            }
+            else 
+            {
+                ToDoCompletingScheduleItem.Remove(item);
+                if (!ToDoPendingScheduleItem.Contains(item))
+                {
+                    ToDoPendingScheduleItem.Add(item);
+                }
+            }
+        });
         LoadToDos();
     }
     [RelayCommand]
@@ -25,19 +51,16 @@ public　partial class ToDoWindowViewModel : ObservableObject
     {
         if (!string.IsNullOrWhiteSpace(NewTitle))
         {
-            ToDoItems.Add(new TodoItem { Title = NewTitle });
+            ToDoPendingScheduleItem.Add(new TodoItem { Content = NewTitle ,Deadlinedate = NewDate });
             NewTitle = string.Empty;
             SaveToDos();
         }
     }
     [RelayCommand]
-    private void CompleteToDoItem(TodoItem? item)
+    private void DeleteToDoItem(TodoItem? item)
     {
-        if (item is not null && ToDoItems.Contains(item))
-        {
-            ToDoItems.Remove(item);
-            SaveToDos();
-        }
+        ToDoPendingScheduleItem.Remove(item);
+        ToDoCompletingScheduleItem.Remove(item);
     }
     [RelayCommand]
     private void OpenMain()
@@ -47,7 +70,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
     }
     private void SaveToDos()
     {
-        var json=JsonSerializer.Serialize(ToDoItems);
+        var json=JsonSerializer.Serialize(ToDoPendingScheduleItem);
         File.WriteAllText(SaveFilePath, json);   
     }
     private void LoadToDos()
@@ -60,7 +83,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
                 var items= JsonSerializer.Deserialize<ObservableCollection<TodoItem>>(json);
                 if (items is not null)
                 {
-                    ToDoItems = items;
+                    ToDoPendingScheduleItem = items;
                 }
             }
         }
