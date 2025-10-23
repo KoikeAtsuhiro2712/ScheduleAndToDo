@@ -19,6 +19,8 @@ public　partial class ToDoWindowViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<TodoItem> toDoCompletingScheduleItem=new();
     [ObservableProperty]
+    private DateTime newDate;
+    [ObservableProperty]
     private string newTitle;
     public ToDoWindowViewModel()
     {
@@ -49,7 +51,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
     {
         if (!string.IsNullOrWhiteSpace(NewTitle))
         {
-            ToDoPendingScheduleItem.Add(new TodoItem { Content = NewTitle });
+            ToDoPendingScheduleItem.Add(new TodoItem { Content = NewTitle ,Deadlinedate = NewDate });
             NewTitle = string.Empty;
             SaveToDos();
         }

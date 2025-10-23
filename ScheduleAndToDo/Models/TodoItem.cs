@@ -7,6 +7,8 @@ public partial class TodoItem : ObservableObject
 {
     [ObservableProperty]
     private string content = string.Empty;
+    [ObservableProperty]
+    private DateTime deadlinedate=DateTime.Now;
     private bool isCompleted;
     public bool IsCompleted
     {
