@@ -15,33 +15,11 @@ public　partial class ToDoWindowViewModel : ObservableObject
     private DateTime deadlineDate= DateTime.Now;
     private const string SaveFilePath = "todos.json";
     [ObservableProperty]
-    private ObservableCollection<TodoItem> toDoPendingItems = new();
-    [ObservableProperty]
-    private ObservableCollection<TodoItem> toDoCompletingItems = new();
+    private ObservableCollection<TodoItem> toDoItems = new();
     [ObservableProperty]
     private string newTitle;
     public ToDoWindowViewModel()
     {
-        WeakReferenceMessenger.Default.Register<TodoItemMessage>(this, (r, m) =>
-        {
-            var item = m.Value;
-            if (item.IsCompleted)
-            {
-                ToDoPendingItems.Remove(item);
-                if (!ToDoCompletingItems.Contains(item))
-                {
-                    ToDoCompletingItems.Add(item);
-                }
-            }
-            else 
-            {
-                ToDoCompletingItems.Remove(item);
-                if (!ToDoPendingItems.Contains(item))
-                {
-                    ToDoPendingItems.Add(item);
-                }
-            }
-        });
         LoadToDos();
     }
     [RelayCommand]
@@ -49,7 +27,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
     {
         if (!string.IsNullOrWhiteSpace(NewTitle))
         {
-            ToDoPendingItems.Add(new TodoItem { Title=NewTitle, IsCompleted=false});
+            ToDoItems.Add(new TodoItem { Title = NewTitle });
             NewTitle = string.Empty;
             SaveToDos();
         }
@@ -57,9 +35,11 @@ public　partial class ToDoWindowViewModel : ObservableObject
     [RelayCommand]
     private void DeleteToDoItem(TodoItem? item)
     {
-        ToDoPendingItems.Remove(item); 
-        ToDoCompletingItems.Remove(item);
-        SaveToDos();
+        if (item is not null && ToDoItems.Contains(item))
+        {
+            ToDoItems.Remove(item);
+            SaveToDos();
+        }
     }
     [RelayCommand]
     private void OpenMain()
@@ -69,9 +49,8 @@ public　partial class ToDoWindowViewModel : ObservableObject
     }
     private void SaveToDos()
     {
-        var allItems = ToDoPendingItems.Concat(ToDoCompletingItems).ToList();
-        var json=JsonSerializer.Serialize(allItems);
-        File.WriteAllText(SaveFilePath,json);
+        var json=JsonSerializer.Serialize(ToDoItems);
+        File.WriteAllText(SaveFilePath, json);   
     }
     private void LoadToDos()
     {
@@ -79,23 +58,11 @@ public　partial class ToDoWindowViewModel : ObservableObject
         { 
             var json=File.ReadAllText(SaveFilePath);
             if (!string.IsNullOrEmpty(json))
-            {
-                var items = JsonSerializer.Deserialize<List<TodoItem>>(json);
+            { 
+                var items= JsonSerializer.Deserialize<ObservableCollection<TodoItem>>(json);
                 if (items is not null)
                 {
-                    ToDoPendingItems.Clear();
-                    ToDoCompletingItems.Clear();
-                    foreach (var item in items)
-                    {
-                        if (item.IsCompleted)
-                        { 
-                            ToDoCompletingItems.Add(item);
-                        }
-                        else
-                        {
-                            ToDoPendingItems.Add(item);
-                        }
-                    }
+                    ToDoItems = items;
                 }
             }
         }
