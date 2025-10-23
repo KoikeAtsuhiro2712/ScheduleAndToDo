@@ -11,6 +11,8 @@ namespace ScheduleAndToDo.ViewModels;
 
 public　partial class ToDoWindowViewModel : ObservableObject
 {
+    [ObservableProperty]
+    private DateTime deadlineDate= DateTime.Now;
     private const string SaveFilePath = "todos.json";
     [ObservableProperty]
     private ObservableCollection<TodoItem> toDoPendingItems = new();
