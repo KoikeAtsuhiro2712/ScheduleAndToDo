@@ -33,16 +33,55 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel Orientation="Horizontal" Grid.Row="2">
-                <Button Content="スケジュールを追加する" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenScheduleAddCommand}"/>
-            <Button Content="期間ごとに閲覧する" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenContextMenuCommand}" CommandParameter="{Binding RelativeSource={RelativeSource self}}">
+            <Button Height="80" Width="200" 
+                    FontSize="20" 
+                    Margin="5" 
+                    Command="{Binding OpenScheduleAddCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" /> 
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="スケジュールの追加" />
+            </Button>
+            <Button Height="80" Width="200" 
+                    FontSize="20" 
+                    Margin="5" 
+                    Command="{Binding OpenContextMenuCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource self}}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="期間毎に閲覧する"/>
                 <Button.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="日毎に見る" Width="200" FontSize="20" Command="{Binding OpenDayScheduleCommand}"/>
-                        <MenuItem Header="月毎に見る" Width="200" FontSize="20" Command="{Binding OpenMonthScheduleCommand}"/>
+                    <ContextMenu Background="White">
+                        <MenuItem Header="日毎に見る" Width="200" FontSize="20" Command="{Binding OpenDayScheduleCommand}" Background="White" Foreground="Orange"/>
+                        <MenuItem Header="月毎に見る" Width="200" FontSize="20" Command="{Binding OpenMonthScheduleCommand}" Background="White" Foreground="Orange"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-            <Button Content="戻る" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenMainCommand}"/>
-            </StackPanel>
+            <Button Height="80" Width="200" 
+                    FontSize="20" 
+                    Margin="5" 
+                    Command="{Binding OpenMainCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedDarkButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="戻る"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
