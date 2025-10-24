@@ -35,8 +35,31 @@
         </StackPanel>
         <!--ボタン群-->
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <Button Content="登録" Width="100" Height="30" Margin="10" Command="{Binding RegisterCommand}"/>
-            <Button Content="戻る" Width="100" Height="30" Command="{Binding OpenScheduleCommand}"/>
+            <Button Height="30" Width="100"
+                    Margin="10" 
+                    Command="{Binding RegisterCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="追加"/>
+            </Button>
+            <Button Height="30" Width="100" 
+                    Command="{Binding OpenScheduleCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="戻る"/>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
