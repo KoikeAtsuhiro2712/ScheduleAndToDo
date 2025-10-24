@@ -19,24 +19,54 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Content="←" Command="{Binding PreviousMonthCommand}" Width="40" Margin="5,0"
-                Grid.Column="0" />
+            <Button Width="40" Margin="5,0"
+                    Command="{Binding PreviousMonthCommand}" 
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Grid.Column="0" >
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="←"/>
+            </Button>
             <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
                 Grid.Column="1"
                 TextAlignment="Center"
                 FontSize="24" 
                 FontWeight="Bold"
                 Margin="10"/>
-            <Button Content="→"
-                Grid.Column="2"
-                Command="{Binding NextMonthCommand}" Width="40" Margin="5,0"/>
+            <Button Width="40" Margin="5,0"
+                    Command="{Binding NextMonthCommand}" 
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Grid.Column="2">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="→"/>
+            </Button>
         </Grid>
-        <Button Content="戻る"
+        <Button Width="60"
+                Height="40"
                 Grid.Row="1"
                 Command="{Binding BackScheduleCommand}"
-                Width="60"
-                Height="40"
-                HorizontalAlignment="Right"/>
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                HorizontalAlignment="Right">
+            <Button.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Button.Resources>
+            <TextBlock Text="戻る"/>
+        </Button>
         <ScrollViewer Grid.Row="2">
             <ItemsControl ItemsSource="{Binding GroupedMonthScheduleItem}">
                 <ItemsControl.ItemTemplate>
