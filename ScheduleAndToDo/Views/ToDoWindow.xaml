@@ -61,12 +61,18 @@
                         <GridViewColumn  Header="削除">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="削除"
-                                            Style="{StaticResource MaterialDesignRaisedButton}"
-                                            Background="{DynamicResource MaterialDesignError}"
-                                            Foreground="White"
+                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
                                             Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
-                                            CommandParameter="{Binding}"/>
+                                            CommandParameter="{Binding}">
+                                        <Button.Resources>
+                                            <ResourceDictionary>
+                                                <ResourceDictionary.MergedDictionaries>
+                                                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml"/>
+                                                </ResourceDictionary.MergedDictionaries>
+                                            </ResourceDictionary>
+                                        </Button.Resources>
+                                        <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" Margin="0,0,4,0"/>
+                                    </Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
