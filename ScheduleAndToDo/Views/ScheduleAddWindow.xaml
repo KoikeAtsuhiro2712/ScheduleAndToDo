@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:ScheduleAndToDo.Views.CommonUI"
         xmlns:local="clr-namespace:ScheduleAndToDo.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
@@ -48,18 +49,9 @@
                 </Button.Resources>
                 <TextBlock Text="追加"/>
             </Button>
-            <Button Height="30" Width="100" 
-                    Command="{Binding OpenScheduleCommand}"
-                    Style="{StaticResource MaterialDesignOutlinedButton}">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-                <TextBlock Text="戻る"/>
-            </Button>
+            <controls:BackButton Height="30"
+                                 Width="100"
+                                 Command="{Binding OpenScheduleCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

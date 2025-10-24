@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:ScheduleAndToDo.ViewModels"
+        xmlns:controls="clr-namespace:ScheduleAndToDo.Views.CommonUI"
         xmlns:local="clr-namespace:ScheduleAndToDo.Views"
         mc:Ignorable="d"
         Title="MonthScheduleWindow" Height="450" Width="800">
@@ -52,21 +53,11 @@
                 <TextBlock Text="→"/>
             </Button>
         </Grid>
-        <Button Width="60"
-                Height="40"
-                Grid.Row="1"
-                Command="{Binding BackScheduleCommand}"
-                Style="{StaticResource MaterialDesignOutlinedButton}"
-                HorizontalAlignment="Right">
-            <Button.Resources>
-                <ResourceDictionary>
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-            </Button.Resources>
-            <TextBlock Text="戻る"/>
-        </Button>
+        <controls:BackButton Height="40"
+                            Width="60"
+                            Grid.Row="1"
+                            Command="{Binding BackScheduleCommand}"
+                             HorizontalAlignment="Right"/>
         <ScrollViewer Grid.Row="2">
             <ItemsControl ItemsSource="{Binding GroupedMonthScheduleItem}">
                 <ItemsControl.ItemTemplate>

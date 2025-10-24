@@ -4,6 +4,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:ScheduleAndToDo.Views.CommonUI"
         xmlns:local="clr-namespace:ScheduleAndToDo.Views"
         xmlns:vm="clr-namespace:ScheduleAndToDo.ViewModels"
         mc:Ignorable="d"
@@ -132,16 +133,8 @@
                 </ListView.View>
             </ListView>
         </ScrollViewer>
-        <Button Style="{StaticResource MaterialDesignOutlinedButton}"
-                Height="30" Width="80" Command="{Binding OpenMainCommand}">
-            <Button.Resources>
-                <ResourceDictionary>
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-            </Button.Resources>
-            <TextBlock Text="戻る"/>
-        </Button>
+        <controls:BackButton Height="30"
+                             Width="80"
+                             Command="{Binding OpenMainCommand}"/>
     </StackPanel>
 </Window>
