@@ -9,10 +9,33 @@
         Title="DaySchedule" Height="450" Width="800">
     <StackPanel Margin="10">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10" >
-            <Button Content="←" Command="{Binding PriviousDayCommand}" Width="40" Margin="5,0"/>
+            <Button  Width="40" Margin="5,0"
+                     Command="{Binding PriviousDayCommand}"
+                     Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="←"/>
+            </Button>
             <TextBlock Text="{Binding CurrentDate,StringFormat={}{0:yyyy/MM/dd(ddd)}}"
                        FontSize="16" VerticalAlignment="Center" Margin="10,0"/>
-            <Button Content="→" Command="{Binding NextDayCommand}" Width="40" Margin="5,0"/>
+            <Button Width="40" 
+                    Margin="5,0" 
+                    Command="{Binding NextDayCommand}" 
+                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="→"/>
+            </Button>
         </StackPanel>
         <ListView ItemsSource="{Binding SelectedDateScheduleItem}" Height="300" Margin="0,0,0,10">
             <ListView.View>
@@ -48,7 +71,18 @@
             </ListView.View>
         </ListView>
         <StackPanel Orientation="Horizontal">
-            <Button Content="戻る" Command="{Binding BackScheduleCommand}" Height="40" Width="80"/>
+            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Height="40" Width="80" 
+                    Command="{Binding BackScheduleCommand}" >
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml"/>
+                        </ResourceDictionary.MergedDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+                <TextBlock Text="戻る"/>
+            </Button>
         </StackPanel>
     </StackPanel>
 </Window>
