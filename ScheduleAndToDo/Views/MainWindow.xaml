@@ -8,7 +8,33 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Text="Schedule And ToDoList App" FontSize="30" HorizontalAlignment="Center"/>
-        <Button Content="スケジュールはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenScheduleCommand}"/>
-        <Button Content="ToDoリストはこちらへ" Height="80" Width="200" FontSize="20" Margin="5" Command="{Binding OpenToDoCommand}"/>
+        <Button Height="80" Width="200"
+                FontSize="20"
+                Margin="5"
+                Command="{Binding OpenScheduleCommand}"
+                Style="{StaticResource MaterialDesignOutlinedButton}">
+            <Button.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Button.Resources>
+            <TextBlock Text="スケジュールはこちらへ"/>
+        </Button>
+        <Button Height="80" Width="200" 
+                FontSize="20" 
+                Margin="5" 
+                Command="{Binding OpenToDoCommand}"
+                Style="{StaticResource MaterialDesignOutlinedButton}">
+            <Button.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Button.Resources>
+            <TextBlock Text="ToDoリストはこちらへ"/>
+        </Button>
     </StackPanel>
 </Window>
