@@ -20,38 +20,21 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Width="40" Margin="5,0"
-                    Command="{Binding PreviousMonthCommand}" 
-                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                    Grid.Column="0" >
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-                <TextBlock Text="←"/>
-            </Button>
+            <controls:ArrowButton Width="40"
+                                  Margin="5,0"
+                                  Command="{Binding PreviousMonthCommand}"
+                                  ButtonText="前月"/>
             <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
                 Grid.Column="1"
                 TextAlignment="Center"
                 FontSize="24" 
                 FontWeight="Bold"
                 Margin="10"/>
-            <Button Width="40" Margin="5,0"
-                    Command="{Binding NextMonthCommand}" 
-                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                    Grid.Column="2">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-                <TextBlock Text="→"/>
-            </Button>
+            <controls:ArrowButton Width="40"
+                                  Margin="5,0"
+                                  Command="{Binding NextMonthCommand}"
+                                  ButtonText="次の月"
+                                  Grid.Column="2"/>
         </Grid>
         <controls:BackButton Height="40"
                             Width="60"
