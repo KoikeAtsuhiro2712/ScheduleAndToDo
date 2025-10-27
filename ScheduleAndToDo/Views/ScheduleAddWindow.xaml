@@ -36,22 +36,13 @@
         </StackPanel>
         <!--ボタン群-->
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <Button Height="30" Width="100"
-                    Margin="10" 
-                    Command="{Binding RegisterCommand}"
-                    Style="{StaticResource MaterialDesignOutlinedButton}">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml"/>
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-                <TextBlock Text="追加"/>
-            </Button>
+            <controls:AddButton Height="30"
+                                Width="100"
+                                Margin="10"
+                                Command="{Binding RegisterCommand}"/>
             <controls:BackButton Height="30"
                                  Width="100"
-                                 Command="{Binding OpenScheduleCommand}"/>
+                                 Command="{Binding openScheduleCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

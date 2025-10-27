@@ -33,22 +33,14 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Height="80" Width="200" 
-                    FontSize="20" 
-                    Margin="5" 
-                    Command="{Binding OpenScheduleAddCommand}"
-                    Style="{StaticResource MaterialDesignOutlinedButton}">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" /> 
-                        </ResourceDictionary.MergedDictionaries>
-                    </ResourceDictionary>
-                </Button.Resources>
-                <TextBlock Text="スケジュールの追加" />
-            </Button>
-            <Button Height="80" Width="200" 
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <controls:AddButton Height="80"
+                                Width="200"
+                                FontSize="20"
+                                Margin="5"
+                                Command="{Binding OpenAddScheduleCommand}"/>
+            <Button Height="80" 
+                    Width="200" 
                     FontSize="20" 
                     Margin="5" 
                     Command="{Binding OpenContextMenuCommand}" 

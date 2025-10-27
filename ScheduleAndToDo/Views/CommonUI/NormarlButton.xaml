@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ScheduleAndToDo.Views.CommonUI.NormarlButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScheduleAndToDo.Views.CommonUI"
+             mc:Ignorable="d" 
+             x:Name="root">
+    <Button Width="{Binding ActualWidth,ElementName=root}"
+            Height="{Binding ActualHeight,ElementName=root}"
+            FontSize="{Binding FontSize,ElementName=root}"
+            Style="{DynamicResource MaterialDesignOutlinedButton}">
+        <Button.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Button.Resources>
+    </Button>
+</UserControl>
