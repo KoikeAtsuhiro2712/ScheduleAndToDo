@@ -42,7 +42,7 @@
                                 Command="{Binding RegisterCommand}"/>
             <controls:BackButton Height="30"
                                  Width="100"
-                                 Command="{Binding openScheduleCommand}"/>
+                                 Command="{Binding OpenScheduleCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

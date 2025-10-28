@@ -12,11 +12,12 @@
         <controls:NormarlButton Width="200"
                                 Height="80"
                                 FontSize="20"
-                                Margin="5"
-                                Command="{Binding OpenScheduleCommand}"/>
+                                ButtonText="スケジュールはこちら"
+                                Margin="5"                                Command="{Binding OpenScheduleCommand}"/>
         <controls:NormarlButton Width="200"
                                 Height="80"
                                 FontSize="20"
+                                ButtonText="ToDoはこちら"
                                 Margin="5"
                                 Command="{Binding OpenToDoCommand}"/>
     </StackPanel>

@@ -13,6 +13,13 @@ namespace ScheduleAndToDo.Views.CommonUI
         {
             InitializeComponent();
         }
+        public static readonly DependencyProperty ButtonTextProperty =
+            DependencyProperty.Register(nameof(ButtonText),typeof(object),typeof(NormarlButton),new PropertyMetadata(null));
+        public object ButtonText
+        {
+            get => GetValue(ButtonTextProperty);
+            set => SetValue(ButtonTextProperty, value);
+        }
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command),typeof(ICommand),typeof(NormarlButton));
         public ICommand Command

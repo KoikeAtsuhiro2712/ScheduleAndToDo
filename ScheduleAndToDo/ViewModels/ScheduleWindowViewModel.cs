@@ -1,12 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using ScheduleAndToDo.Models;
 using ScheduleAndToDo.Views.Message;
 using System.Collections.ObjectModel;
-using ScheduleAndToDo.Models;
 using System.IO;
 using System.Text.Json;
-using System.Windows;
 using System.Windows.Controls;
 namespace ScheduleAndToDo.ViewModels;
 

@@ -9,6 +9,7 @@
     <Button Width="{Binding ActualWidth,ElementName=root}"
             Height="{Binding ActualHeight,ElementName=root}"
             FontSize="{Binding FontSize,ElementName=root}"
+            Command="{Binding Command,RelativeSource={RelativeSource AncestorType=UserControl}}"
             Style="{DynamicResource MaterialDesignOutlinedButton}">
         <Button.Resources>
             <ResourceDictionary>
@@ -17,5 +18,6 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Button.Resources>
+        <ContentPresenter Content="{Binding ButtonText,RelativeSource={RelativeSource AncestorType=UserControl}}"/>
     </Button>
 </UserControl>

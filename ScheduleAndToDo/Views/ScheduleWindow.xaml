@@ -38,7 +38,7 @@
                                 Width="200"
                                 FontSize="20"
                                 Margin="5"
-                                Command="{Binding OpenAddScheduleCommand}"/>
+                                Command="{Binding OpenScheduleAddCommand}"/>
             <Button Height="80" 
                     Width="200" 
                     FontSize="20" 
