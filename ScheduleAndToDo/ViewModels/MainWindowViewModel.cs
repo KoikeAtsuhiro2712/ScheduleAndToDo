@@ -9,13 +9,13 @@ public partial class MainWindowViewModel : ObservableObject
 {
     //スケジュール画面に遷移する関数
     [RelayCommand]
-    private void OpenSchedule()
+    private void TransitionSchedule()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
     }
     //ToDo画面に遷移する関数
     [RelayCommand]
-    private void OpenToDo()
+    private void TransitionToDo()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Todo"));
     }

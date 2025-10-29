@@ -52,31 +52,31 @@ public　partial class ToDoWindowViewModel : ObservableObject
     }
     //追加ボタンが押された際に実行される
     [RelayCommand]
-    private void AddItem()
+    private void AddToDo()
     {
         if (!string.IsNullOrWhiteSpace(NewTitle))
         {
             ToDoPendingScheduleItem.Add(new TodoItem { Content = NewTitle ,Deadlinedate = NewDate });
             NewTitle = string.Empty;
-            SaveToDos();
+            SaveToDo();
         }
     }
     //削除ボタンが押された際に実行される
     [RelayCommand]
-    private void DeleteToDoItem(TodoItem? item)
+    private void DeleteToDo(TodoItem? item)
     {
         ToDoPendingScheduleItem.Remove(item);
         ToDoCompletingScheduleItem.Remove(item);
     }
     //戻るボタンが押された際に実行される
     [RelayCommand]
-    private void OpenMain()
+    private void BackMain()
     {
-        SaveToDos();
+        SaveToDo();
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Main"));
     }
     //ToDoリストデータを保持させるために実行
-    private void SaveToDos()
+    private void SaveToDo()
     {
         var json=JsonSerializer.Serialize(ToDoPendingScheduleItem);
         File.WriteAllText(SaveFilePath, json);   

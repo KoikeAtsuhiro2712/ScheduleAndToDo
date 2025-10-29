@@ -22,14 +22,14 @@ public partial class DayScheduleWindowViewModel : ObservableObject
     }
     //今、表示しているスケジュールの前の月のスケジュールを表示する
     [RelayCommand]
-    private void PriviousDay()
+    private void DisplayPriviousDay()
     {
         CurrentDate = CurrentDate.AddDays(-1);
         LoadSchedule();
     }
     //今、表示しているスケジュールの次の月のスケジュールを表示する
     [RelayCommand]
-    private void NextDay()
+    private void DisplayNextDay()
     {
         CurrentDate = CurrentDate.AddDays(1);
         LoadSchedule();

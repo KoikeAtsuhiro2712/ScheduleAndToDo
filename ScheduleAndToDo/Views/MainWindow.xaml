@@ -15,13 +15,13 @@
                             FontSize="20"
                             ButtonText="スケジュールはこちら"
                             Margin="5"                                
-                            Command="{Binding OpenScheduleCommand}"/>
+                            Command="{Binding TransitionScheduleCommand}"/>
         <!--ToDo画面に遷移する-->
         <controls:NormarlButton Width="200"
                             Height="80"
                             FontSize="20"
                             ButtonText="ToDoはこちら"
                             Margin="5"
-                            Command="{Binding OpenToDoCommand}"/>
+                            Command="{Binding TransitionToDoCommand}"/>
     </StackPanel>
 </Window>

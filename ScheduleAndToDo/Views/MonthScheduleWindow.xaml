@@ -23,7 +23,7 @@
             <!--一つ前のスケジュール-->
             <controls:ArrowButton Width="40"
                                 Margin="5,0"
-                                Command="{Binding PreviousMonthCommand}"
+                                Command="{Binding DisplayPreviousMonthCommand}"
                                 ButtonText="前月"/>
             <TextBlock Text="{Binding CurrentDate,StringFormat='{}{0:yyyy年MM月}'}" 
                 Grid.Column="1"
@@ -34,7 +34,7 @@
             <!--一つ後のスケジュール-->
             <controls:ArrowButton Width="40"
                                 Margin="5,0"
-                                Command="{Binding NextMonthCommand}"
+                                Command="{Binding DisplayNextMonthCommand}"
                                 ButtonText="次の月"
                                 Grid.Column="2"/>
         </Grid>

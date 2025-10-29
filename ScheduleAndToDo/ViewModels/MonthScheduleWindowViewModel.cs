@@ -24,14 +24,14 @@ public partial class MonthScheduleWindowViewModel : ObservableObject
     }
     //今、表示されている月の前の月のスケジュールを表示する。
     [RelayCommand]
-    private void PreviousMonth()
+    private void DisplayPreviousMonth()
     {
         CurrentDate = CurrentDate.AddMonths(-1);
         Generate();
     }
     //今、表示されている月の次の月のスケジュールを表示する。
     [RelayCommand]
-    private void NextMonth()
+    private void DisplayNextMonth()
     {
         CurrentDate = CurrentDate.AddMonths(1);
         Generate();

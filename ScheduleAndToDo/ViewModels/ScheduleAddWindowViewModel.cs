@@ -39,13 +39,13 @@ public partial class ScheduleAddWindowViewModel : ObservableObject
         LoadData();
     }
     [RelayCommand]
-    private void OpenSchedule()
+    private void BackSchedule()
     {
         SaveData();
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
     }
     [RelayCommand]
-    private void Register()
+    private void RegisterSchedule()
     {
         var newItem = new ScheduleItem
         {

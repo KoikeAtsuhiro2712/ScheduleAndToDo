@@ -39,10 +39,10 @@
             <controls:AddButton Height="30"
                                 Width="100"
                                 Margin="10"
-                                Command="{Binding RegisterCommand}"/>
+                                Command="{Binding RegisterScheduleCommand}"/>
             <controls:BackButton Height="30"
                                  Width="100"
-                                 Command="{Binding OpenScheduleCommand}"/>
+                                 Command="{Binding BackScheduleCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -39,7 +39,7 @@
                                 Width="200"
                                 FontSize="20"
                                 Margin="5"
-                                Command="{Binding OpenScheduleAddCommand}"/>
+                                Command="{Binding TransitionScheduleAddCommand}"/>
             <!--期間毎でスケジュールを閲覧できる。(日毎 or 月毎)-->
             <Button Height="80" 
                 Width="200" 
@@ -58,8 +58,8 @@
                 <TextBlock Text="期間毎に閲覧する"/>
                 <Button.ContextMenu>
                     <ContextMenu Background="White">
-                        <MenuItem Header="日毎に見る" Width="200" FontSize="20" Command="{Binding OpenDayScheduleCommand}" Background="White" Foreground="Orange"/>
-                        <MenuItem Header="月毎に見る" Width="200" FontSize="20" Command="{Binding OpenMonthScheduleCommand}" Background="White" Foreground="Orange"/>
+                        <MenuItem Header="日毎に見る" Width="200" FontSize="20" Command="{Binding TransitionDayScheduleCommand}" Background="White" Foreground="Orange"/>
+                        <MenuItem Header="月毎に見る" Width="200" FontSize="20" Command="{Binding TransitionMonthScheduleCommand}" Background="White" Foreground="Orange"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
@@ -67,7 +67,7 @@
             <controls:BackButton Height="80" 
                                 Width="200"
                                 FontSize="20"
-                                Command="{Binding OpenMainCommand}"/>
+                                Command="{Binding BackMainCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
