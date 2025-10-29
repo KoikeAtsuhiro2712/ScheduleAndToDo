@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleAndToDo", "ScheduleAndToDo\ScheduleAndToDo.csproj", "{52DCB5E2-EFB7-BE1D-1690-956ACBDBC64D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleAndToDo.Test", "ScheduleAndToDo.Test\ScheduleAndToDo.Test.csproj", "{1988E524-42F1-463C-8643-9D34732F5E82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{52DCB5E2-EFB7-BE1D-1690-956ACBDBC64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52DCB5E2-EFB7-BE1D-1690-956ACBDBC64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52DCB5E2-EFB7-BE1D-1690-956ACBDBC64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1988E524-42F1-463C-8643-9D34732F5E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1988E524-42F1-463C-8643-9D34732F5E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1988E524-42F1-463C-8643-9D34732F5E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1988E524-42F1-463C-8643-9D34732F5E82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
