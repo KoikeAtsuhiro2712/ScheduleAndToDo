@@ -20,112 +20,25 @@
                                 Margin="0,20,0,0"
                                 Command="{Binding AddItemCommand}"/>
         </StackPanel>
+        <TextBlock Text="未完了"
+                   Margin="0,10,0,10"
+                   FontSize="15"/>
+
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListView ItemsSource="{Binding ToDoPendingScheduleItem}" Height="100" Margin="0,0,0,10">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="完了可否">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsCompleted}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="ToDo" Width="300">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Content}"
-                                               TextAlignment="Center"
-                                               FontSize="14"
-                                               Foreground="black"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="期限">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Deadlinedate}"
-                                               FontSize="14"
-                                               Foreground="Black"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn  Header="削除">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
-                                            CommandParameter="{Binding}">
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <ResourceDictionary.MergedDictionaries>
-                                                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml"/>
-                                                </ResourceDictionary.MergedDictionaries>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                        <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" Margin="0,0,4,0"/>
-                                    </Button>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <controls:Todolist ItemsSource="{Binding ToDoPendingScheduleItem}"
+                               DeleteCommand="{Binding DeleteToDoItemCommand}"/>
         </ScrollViewer>
+        <TextBlock Text="完了済"
+                   Margin="0,10,0,10"
+                   FontSize="15"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListView ItemsSource="{Binding ToDoCompletingScheduleItem}" Height="100" Margin="0,0,0,10">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="完了可否">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsCompleted}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="ToDo" Width="300">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Content}"
-                                               TextAlignment="Center"
-                                               FontSize="14"
-                                               Foreground="Black"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="期限">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Deadlinedate}"
-                                               FontSize="14"
-                                               Foreground="Black"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn  Header="削除">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                                            Command="{Binding DataContext.DeleteToDoItemCommand,RelativeSource={RelativeSource AncestorType=Window}}"
-                                            CommandParameter="{Binding}">
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <ResourceDictionary.MergedDictionaries>
-                                                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml"/>
-                                                </ResourceDictionary.MergedDictionaries>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                        <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" Margin="0,0,4,0"/>
-                                    </Button>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <!--完了済のタスク-->
+            <controls:Todolist ItemsSource="{Binding ToDoCompletingScheduleItem}"
+                            DeleteCommand="{Binding DeleteToDoItemCommand}"/>
         </ScrollViewer>
+     
         <controls:BackButton Height="30"
-                             Width="80"
-                             Command="{Binding OpenMainCommand}"/>
+                            Width="80"
+                            Command="{Binding OpenMainCommand}"/>
     </StackPanel>
 </Window>
