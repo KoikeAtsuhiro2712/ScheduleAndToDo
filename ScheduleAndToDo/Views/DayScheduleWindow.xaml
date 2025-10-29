@@ -10,16 +10,20 @@
         Title="DaySchedule" Height="450" Width="800">
     <StackPanel Margin="10">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10" >
+            <!--前の日のスケジュール表示する-->
             <controls:ArrowButton Width="40"
-                                  Margin="5,0"
-                                  Command="{Binding PriviousDayCommand}"/>
+                                Margin="5,0"
+                                Command="{Binding PriviousDayCommand}"/>
+            <!--現在の日時を表示する-->
             <TextBlock Text="{Binding CurrentDate,StringFormat={}{0:yyyy/MM/dd(ddd)}}"
-                       FontSize="16" VerticalAlignment="Center" Margin="10,0"/>
+                    FontSize="16" VerticalAlignment="Center" Margin="10,0"/>
+            <!--次の日のスケジュールを表示する-->
             <controls:ArrowButton Width="40"
-                                  Margin="5,0"
-                                  Command="{Binding NextDayCommand}"/>
+                                Margin="5,0"
+                                Command="{Binding NextDayCommand}"/>
         </StackPanel>
-        <ListView ItemsSource="{Binding SelectedDateScheduleItem}" Height="300" Margin="0,0,0,10">
+        <!--該当する日付のスケジュールを表示-->
+            <ListView ItemsSource="{Binding SelectedDateScheduleItem}" Height="300" Margin="0,0,0,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="スケジュール" Width="300">
@@ -52,7 +56,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Orientation="Horizontal">
+        <!--スケジュールのメイン画面に遷移する-->
+            <StackPanel Orientation="Horizontal">
             <controls:BackButton Height="40"
                                  Width="80"
                                  Command="{Binding BackScheduleCommand}"/>

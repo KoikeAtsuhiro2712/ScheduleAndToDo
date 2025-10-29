@@ -9,16 +9,19 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Text="Schedule And ToDoList App" FontSize="30" HorizontalAlignment="Center"/>
+        <!--スケジュール画面に遷移する-->
         <controls:NormarlButton Width="200"
-                                Height="80"
-                                FontSize="20"
-                                ButtonText="スケジュールはこちら"
-                                Margin="5"                                Command="{Binding OpenScheduleCommand}"/>
+                            Height="80"
+                            FontSize="20"
+                            ButtonText="スケジュールはこちら"
+                            Margin="5"                                
+                            Command="{Binding OpenScheduleCommand}"/>
+        <!--ToDo画面に遷移する-->
         <controls:NormarlButton Width="200"
-                                Height="80"
-                                FontSize="20"
-                                ButtonText="ToDoはこちら"
-                                Margin="5"
-                                Command="{Binding OpenToDoCommand}"/>
+                            Height="80"
+                            FontSize="20"
+                            ButtonText="ToDoはこちら"
+                            Margin="5"
+                            Command="{Binding OpenToDoCommand}"/>
     </StackPanel>
 </Window>

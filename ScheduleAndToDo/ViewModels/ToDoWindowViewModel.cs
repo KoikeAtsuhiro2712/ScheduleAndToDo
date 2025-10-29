@@ -24,11 +24,14 @@ public　partial class ToDoWindowViewModel : ObservableObject
     private string newTitle;
     public ToDoWindowViewModel()
     {
+        //チェックボックスに変化が起きたときに、実行される
         WeakReferenceMessenger.Default.Register<TodoCompletedMessage>(this, (r, m) =>
         {
             var item = m.Value;
+            //チェックがつけられた場合
             if (item.IsCompleted)
             {
+                //該当のスケジュールを未完了タスク領域から取り除く
                 ToDoPendingScheduleItem.Remove(item);
                 if (!ToDoCompletingScheduleItem.Contains(item))
                 {
@@ -37,6 +40,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
             }
             else 
             {
+                //該当のスケジュールを完了タスク領域から取り除く
                 ToDoCompletingScheduleItem.Remove(item);
                 if (!ToDoPendingScheduleItem.Contains(item))
                 {
@@ -46,6 +50,7 @@ public　partial class ToDoWindowViewModel : ObservableObject
         });
         LoadToDos();
     }
+    //追加ボタンが押された際に実行される
     [RelayCommand]
     private void AddItem()
     {
@@ -56,23 +61,27 @@ public　partial class ToDoWindowViewModel : ObservableObject
             SaveToDos();
         }
     }
+    //削除ボタンが押された際に実行される
     [RelayCommand]
     private void DeleteToDoItem(TodoItem? item)
     {
         ToDoPendingScheduleItem.Remove(item);
         ToDoCompletingScheduleItem.Remove(item);
     }
+    //戻るボタンが押された際に実行される
     [RelayCommand]
     private void OpenMain()
     {
         SaveToDos();
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Main"));
     }
+    //ToDoリストデータを保持させるために実行
     private void SaveToDos()
     {
         var json=JsonSerializer.Serialize(ToDoPendingScheduleItem);
         File.WriteAllText(SaveFilePath, json);   
     }
+    //ToDoリストデータをLoadingする。
     private void LoadToDos()
     {
         if (File.Exists(SaveFilePath))

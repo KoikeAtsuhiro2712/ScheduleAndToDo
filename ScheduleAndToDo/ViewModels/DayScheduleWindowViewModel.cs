@@ -20,35 +20,42 @@ public partial class DayScheduleWindowViewModel : ObservableObject
     {
         LoadSchedule();
     }
+    //今、表示しているスケジュールの前の月のスケジュールを表示する
     [RelayCommand]
     private void PriviousDay()
     {
         CurrentDate = CurrentDate.AddDays(-1);
         LoadSchedule();
     }
+    //今、表示しているスケジュールの次の月のスケジュールを表示する
     [RelayCommand]
     private void NextDay()
     {
         CurrentDate = CurrentDate.AddDays(1);
         LoadSchedule();
     }
+    //スケジュールメイン画面に遷移する
     [RelayCommand]
     private void BackSchedule()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Schedule"));
     }
+    //schedule.jsonを読み取って、今後のスケジュールを表示する。
     private void LoadSchedule()
     {
         if (File.Exists(FilePath))
         { 
+            //jsonファイルを読み込む
             var json=File.ReadAllText(FilePath);
             if (!string.IsNullOrEmpty(json))
             {
                 var items = JsonSerializer.Deserialize<ObservableCollection<ScheduleItem>>(json);
                 if (items!=null)
                 {
+                    //読み込んだデータから日付が該当の日付のもののみ、抜き出す。
                     var filter = items.Where(s => s.Date == currentDate);
                     SelectedDateScheduleItem.Clear();
+                    //抜き出したデータを、表示する。
                     foreach (var item in filter)
                     {
                         selectedDateScheduleItem.Add(item);

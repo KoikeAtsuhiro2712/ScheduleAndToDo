@@ -14,8 +14,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Text="今後の予定" FontSize="20"/>
-
-            <ListBox Grid.Row="1"
+        <!--予定テーブルにあるデータのうち、今日より先の日付を表示する-->
+        <ListBox Grid.Row="1"
                  ItemsSource="{Binding SelectedDateScheduleItem}"
                  Height="200">
                 <ListBox.ItemTemplate>
@@ -32,20 +32,22 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
+        </ListBox>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <!--スケジュールを追加するためのフォームに遷移-->
             <controls:AddButton Height="80"
                                 Width="200"
                                 FontSize="20"
                                 Margin="5"
                                 Command="{Binding OpenScheduleAddCommand}"/>
+            <!--期間毎でスケジュールを閲覧できる。(日毎 or 月毎)-->
             <Button Height="80" 
-                    Width="200" 
-                    FontSize="20" 
-                    Margin="5" 
-                    Command="{Binding OpenContextMenuCommand}" 
-                    CommandParameter="{Binding RelativeSource={RelativeSource self}}"
-                    Style="{StaticResource MaterialDesignOutlinedButton}">
+                Width="200" 
+                FontSize="20" 
+                Margin="5" 
+                Command="{Binding OpenContextMenuCommand}" 
+                CommandParameter="{Binding RelativeSource={RelativeSource self}}"
+                Style="{StaticResource MaterialDesignOutlinedButton}">
                 <Button.Resources>
                     <ResourceDictionary>
                         <ResourceDictionary.MergedDictionaries>
@@ -61,10 +63,11 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
+            <!--メイン画面に遷移する-->
             <controls:BackButton Height="80" 
-                                 Width="200"
-                                 FontSize="20"
-                                 Command="{Binding OpenMainCommand}"/>
+                                Width="200"
+                                FontSize="20"
+                                Command="{Binding OpenMainCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

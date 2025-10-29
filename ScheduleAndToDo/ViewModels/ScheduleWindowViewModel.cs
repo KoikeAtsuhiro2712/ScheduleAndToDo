@@ -33,11 +33,13 @@ public partial class ScheduleWindowViewModel : ObservableObject
             }
         }
     }
+    //スケジュール追加画面に遷移する
     [RelayCommand]
     private void OpenScheduleAdd()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("ScheduleAdd"));
     }
+    //押すと、中のコンテキストメニューが開くようになっている
     [RelayCommand]
     private void OpenContextMenu(Button? button)
     {
@@ -48,17 +50,20 @@ public partial class ScheduleWindowViewModel : ObservableObject
             button.ContextMenu.IsOpen = true;
         }
     }
+    //メイン画面に戻るようにしている
     [RelayCommand]
     private void OpenMain()
     {
         WeakReferenceMessenger.Default.Send(new NavigationMessage("Main"));
     }
+    //コンテキストメニューの中の日毎スケジュール画面に遷移
     [RelayCommand]
     private void OpenDaySchedule()
     {
         //MessageBox.Show("DayScheduleに遷移します","画面遷移",MessageBoxButton.OKCancel,MessageBoxImage.Information);
         WeakReferenceMessenger.Default.Send(new NavigationMessage("DaySchedule"));
     }
+    //コンテキストメニューの中の月毎スケジュール画面に遷移
     [RelayCommand]
     private void OpenMonthSchedule()
     {
